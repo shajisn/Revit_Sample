@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <div class="row mt-3 mb-2">
+        <div class="col-sm">
+            <div class="input-group input-group-lg w-90 mx-auto">
+                <div class="build-spinner" *ngIf="isLoading">
+                    <knot-spinner [active]="isLoading"></knot-spinner>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading">
+        <div class="d-flex mb-3 margin-t5 justify-content-between align-items-center update-wrapper" >
+            <h3><b>Job Orders</b></h3>
+            <div >
+                <button class="btn btn-primary" [routerLink]="['/upload']">
+                    Create
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 50px; margin-left: 10px; width:100%">
+        <!-- <table class="table table-striped table-bordered dataTable"> -->
+        <table class="gridtable" id="job-orders">
+            <thead>
+                <tr>
+                    <th scope="col" width="25px" >#</th>
+                    <th scope="col" width="150px" sortable="name" (sort)="onSort($event)">Job Name</th>
+                    <th scope="col" width="250px" sortable="decription" (sort)="onSort($event)">Description</th>
+                    <th scope="col" width="125px" sortable="upload_status" (sort)="onSort($event)">Upload Status</th>
+                    <th scope="col" width="100px" sortable="revit_file" (sort)="onSort($event)">Revit File</th>
+                    <th scope="col" width="200px" sortable="forge_status" (sort)="onSort($event)">Forge Status</th>
+                    <th scope="col" width="200px" sortable="export_status" (sort)="onSort($event)">Export Status</th>
+                    <th scope="col" width="100px" sortable="json_url" (sort)="onSort($event)">Export File</th>
+
+                    <th scope="col" width="150px" sortable="gracie_status" (sort)="onSort($event)">AI Status</th>
+                    <th scope="col" width="150px" sortable="gracie_url" (sort)="onSort($event)">Estimate File</th>
+
+                    <th scope="col" width="100px" sortable="user_id" (sort)="onSort($event)">User ID</th>
+                    <th scope="col" width="150px" sortable="date" (sort)="onSort($event)">Created Date</th>
+                    <th scope="col" width="150px" sortable="date" (sort)="onSort($event)">Modified Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of job_orders">
+                    <td>{{ order._id }}</td>
+                    <td>
+                        <a [routerLink]="['/upload']" 
+                            [queryParams]="{job_name: order.name, job_description: order.description, file_name: order.upload_file_name}">
+                            {{ order.name }}
+                        </a>
+                    </td>
+                    <td id="trim_col">{{ order.description }}</td>
+                    <td>{{ order.upload_status }}</td>
+                    <td id="trim_col">
+                        <div *ngIf="order.forge_doc_id != ''">
+                            <a [routerLink]="['/viewer']" [queryParams]="{doc_urn: order.forge_doc_id, job_name: order.name}">
+                                {{ order.upload_file_name }} </a>
+                        </div>
+                        <div *ngIf="order.forge_doc_id == ''">
+                            {{ order.upload_file_name }} 
+                        </div>
+                    </td>
+                    <td>{{ order.forge_status }}</td>
+                    <td>{{ order.export_status }}</td>
+                    <td id="trim_col">
+                        <div *ngIf="order.json_url != ''">
+                            <a href="javascript:" (click)="download_json(order.json_file_id, order.json_file_name)">{{ order.json_file_name }}</a>
+                        </div>
+                        <div *ngIf="order.json_url == ''">
+                            {{ order.json_file_name }} 
+                        </div>
+                    </td>
+                    <td>{{ order.gracie_status }}</td>
+                    <td id="trim_col">{{ order.gracie_url }}</td>
+                    
+                    <td>{{ order.user_id }}</td>
+                    <td>{{ order.created_time }}</td>
+                    <td>{{ order.modified_time }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

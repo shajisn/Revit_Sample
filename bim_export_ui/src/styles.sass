@@ -1,0 +1,193 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
+
+$tabstrip-bg: #f2f2f2;
+$tabstrip-item-selected-bg: #f2f2f2;
+$tabstrip-item-text: black;
+$panelbar-text: #697279;
+$button-hovered-bg: none;
+$tabstrip-item-gap: 50px;
+$tabstrip-item-padding-y: 30px 1px;
+$tabstrip-content-border: white;
+$tabstrip-item-selected-border: #f2f2f2;
+@import "~font-awesome/css/font-awesome.min.css";
+html, body
+    height: 100%
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500
+    .build-spinner
+        position: fixed
+        top: 0
+        left: 0
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 100%
+        height: 100%
+.tab-wrapper
+    .margin-t5
+        margin-top: 2.5rem
+    .k-tabstrip-items
+        padding: 0 1rem
+        font-weight: 500
+        @media screen and (max-width: 600px)
+            flex-wrap: wrap
+            justify-content: between
+            .k-item + .k-item
+                margin:  0
+        .k-item
+            padding: 1.3rem 0 .6rem
+            border-bottom: 4px solid transparent
+            color: #999999
+            @media screen and (max-width: 600px)
+                width: 50%
+                display: block
+                text-align: center
+            .k-link
+                padding: 0
+        .k-state-active
+            border-bottom: 4px solid #1F70C1 !important
+            border-radius: 0
+            color: #434343
+    .k-content
+        padding: 0
+    .generatediv, 
+    .update-wrapper,
+    .generated-div
+        width: 50%!important
+        @media screen and (max-width: 768px)
+             width: 100%!important
+        .textbox1 
+            width: calc(100% - 37px)
+    .lookupdiv
+        width: 100%
+        @media screen and (max-width: 768px)
+            width: 100%!important
+        @media screen and (min-width: 992px)
+            width: 40%!important
+        @media screen and (min-width: 993px)
+            width: 30%!important
+        .textbox1 
+            width: calc(100% - 37px)    
+    .closeicon1
+        right: 52px
+        top: 50%
+        transform: translateY(-50%)
+    .card-title-big
+        font-size: 1.6rem
+        font-weight:normal
+        color: #38444c
+        font-family: Roboto
+    .k-card
+        border: 0
+        .k-card-header
+            padding-bottom: 8px
+            border-color: #6d6d6d
+        .generated-div
+            background: #fff
+            border: 1px solid #818D95
+            opacity: 1   
+            padding: 0 
+        .generated-values 
+            padding: 12px 16px 
+        .updated-div
+            @extend .generated-div 
+            width: 100% !important 
+    .k-dropdown-wrap
+        height: calc( 2.25rem + 2px)
+        .k-input
+            height: calc( 2.25rem + 2px) 
+    .form-control
+        white-space: break-spaces 
+        &.k-textbox
+            border-width: 2px
+            border-control: #999999
+    .k-dialog
+        @media screen and (max-width:600px)
+            width:90%!important
+    .k-panelbar
+        .k-item 
+            .k-link, .k-link.k-state-selected
+                color: #697279
+                font-weight: 500
+                
+    .lookup-wrapper
+        padding: 15px
+        border: 1px solid #d2d2d2
+        border-radius: 8px
+        height: calc(100vh - 250px)
+        background: #f2f2f2
+        @media screen and (max-width:600px)
+            height: calc(100vh - 300px)
+        .panelbar-wrapper
+            height: calc(100% - 50px)
+            overflow: auto
+        .description-wrapper
+            height: 100%
+            overflow: auto
+    .lookup-wrapper-sidebar
+        background: #fff
+        padding: 1rem
+        border-radius: 8px
+        border: 1px solid #d2d2d2
+        .k-link.k-state-selected
+            color: #fffff
+            background: #2B3841
+    .k-grid
+        font-weight: 500
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap'
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap'
+
+
+button.calendar, button.calendar:active
+  width: 2.75rem;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=') !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: center;
+
+
+/* Sortable table demo */
+
+th[sortable] 
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+
+th[sortable].desc:before, th[sortable].asc:before 
+  content: '';
+  display: block;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAmxJREFUeAHtmksrRVEUx72fH8CIGQNJkpGUUmakDEiZSJRIZsRQmCkTJRmZmJgQE0kpX0D5DJKJgff7v+ru2u3O3vvc67TOvsdatdrnnP1Y///v7HvvubdbUiIhBISAEBACQkAICAEhIAQ4CXSh2DnyDfmCPEG2Iv9F9MPlM/LHyAecdyMzHYNwR3fdNK/OH9HXl1UCozD24TCvILxizEDWIEzA0FcM8woCgRrJCoS5PIwrANQSMAJX1LEI9bqpQo4JYNFFKRSvIgsxHDVnqZgIkPnNBM0rIGtYk9YOOsqgbgepRCfdbmFtqhFkVEDVPjJp0+Z6e6hRHhqBKgg6ZDCvYBygVmUoEGoh5JTRvIJwhJo1aUOoh4CLPMyvxxi7EWOMgnCGsXXI1GIXlZUYX7ucU+kbR8NW8lh3O7cue0Pk32MKndfUxQFAwxdirk3fHappAnc0oqDPzDfGTBrCfHP04dM4oTV8cxr0SVzH9FF07xD3ib6xCDE+M+aUcVygtWzzbtGX2rPBrEUYfecfQkaFzYi6HjVnGBdtL7epqAlc1+jRdAap74RrnPc4BCijttY2tRcdN0g17w7HqZrXhdJTYAuS3hd8z+vKgK3V1zWPae0mZDMykadBn1hTQBLnZNwVrJpSe/NwEeDsEwCctEOsJTsgxLvCqUl2ACftEGvJDgjxrnBqkh3ASTvEWrIDQrwrnJpkB3DSDrGW7IAQ7wqnJtkBnLRztejXXVu4+mxz/nQ9jR1w5VB86ejLTFcnnDwhzV+F6T+CHZlx6THSjn76eyyBIOPHyDakhBAQAkJACAgBISAEhIAQYCLwC8JxpAmsEGt6AAAAAElFTkSuQmCC') no-repeat;
+  background-size: 22px;
+  width: 22px;
+  height: 22px;
+  float: left;
+  margin-left: -22px;
+
+th[sortable].desc:before 
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+
+/* Filtering table demo */
+ngbd-table-filtering span.ngb-highlight
+  background-color: yellow;
+
+/* Complete table demo */
+ngbd-table-complete span.ngb-highlight
+  background-color: yellow;
+
+ngb-carousel .picsum-img-wrapper
+  position: relative;
+  height: 0;
+  padding-top: 55%; /* Keep ratio for 900x500 images */
+
+ngb-carousel .picsum-img-wrapper>img
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;

@@ -1,0 +1,14 @@
+::ng-deep .my-view-front-button {
+   background: rgb(214, 128, 128);
+ }
+ ::ng-deep .my-view-back-button {
+   background: rgb(159, 159, 233);
+ }
+
+ .build-spinner {
+    position: absolute!important;
+    z-index: 1;
+    width: 100%!important;
+    justify-content: center;
+    margin-top: 10%;
+ }

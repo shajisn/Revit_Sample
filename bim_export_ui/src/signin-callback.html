@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script src="oidc-client.min.js"></script>
+    <script>
+    var mgr = new Oidc.UserManager();
+    mgr.signinRedirectCallback().then((user) => {
+            window.history.replaceState({}, window.document.title, window.location.origin);
+            window.location = user.state || "/";
+        }, error => {
+            console.error(error);
+        });
+    </script>
+</body>
+</html>

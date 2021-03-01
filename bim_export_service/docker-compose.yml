@@ -1,0 +1,41 @@
+version: "3.3"
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+     - '6379:6379'
+
+  webapp:
+    build: .
+    container_name: flask_app
+    ports:
+      - "5000:5000"
+    links:
+      - redis
+    depends_on:
+      - redis
+    command: python3 run.py
+
+
+  worker:
+    build: .
+    container_name: worker
+    command: celery -A celery_worker.celery_app worker 
+    # command: celery -A celery_worker.celery_app worker -Q forge_queue --concurrency 2 -P solo  
+    links:
+      - redis
+    depends_on:
+      - redis
+
+
+  # email_worker:
+  #   build: .
+  #   container_name: email_worker
+  #   command: celery -A celery_worker.celery_app worker -Q email_queue --concurrency 1 -P solo  
+  #   links:
+  #     - redis
+  #   depends_on:
+  #     - redis
+    

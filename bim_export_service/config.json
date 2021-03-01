@@ -1,0 +1,36 @@
+{
+  "server_config": {
+    "debug": true, 
+    "port": 5000, 
+    "host": "0.0.0.0"
+  },
+  "authn": {
+    "identity_server_url": "https://test-login.gordian.com/.well-known/openid-configuration",
+    "resource_server_url": "https://test-login.gordian.com/resources"
+  },
+  "forge_config": {
+    "forge_connection_url": "https://developer.api.autodesk.com/",
+    "forge_client_id": "----" ,
+    "forge_client_secret": "---"
+  },
+  "celery_config": {
+    "broker_url": "",
+    "backend_result": "",
+    "redis_host": "redis",
+    "redis_port": "6380",
+    "redis_secret": "----"
+  },
+  "mongo_config":{
+    "mongo_url":"mongodb+srv://<server>:<secret>@dev0.6zrtv.mongodb.net/forgeBIMDB?retryWrites=true&w=majority",
+    "mongo_db_name":"forgeBIMDB",
+    "mongo_coll_name":"jobOrders"
+  },
+  "box_config":{
+    "box_client_id":"---",
+    "box_client_secret":"--",
+    "box_enterprise_id":"--",
+    "box_jwt_key_id":"---",
+    "box_rsa_private_key_file_sys_path":"./privateKey.pem",
+    "box_rsa_private_key_passphrase":"--"
+  }
+}

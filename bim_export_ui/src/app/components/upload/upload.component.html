@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row mt-3 mb-2">
+        <div class="col-sm">
+            <div class="input-group input-group-lg w-90 mx-auto">
+                  <div class="build-spinner" *ngIf="isLoading">
+                      <knot-spinner [active]="isLoading"></knot-spinner>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading">
+        <div class="d-flex mb-3 margin-t5 justify-content-between align-items-center update-wrapper" >
+            <h3>New Job Order</h3>
+            <div>
+                <button class="btn btn-primary" style="margin-top: 0px; margin-right: 10px;" 
+                    *ngIf="is_update" (click)="enable_edit()">
+                    {{ enable_editing == true ? 'Cancel' : 'Edit' }}
+                </button>
+                <button class="btn btn-primary" (click)="back()">
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 70px;">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="info-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name_input">Name</label>
+                        <input type="text" class="form-control" [readonly]="!enable_editing" id="name_input" 
+                            name="name" [(ngModel)]="job_name" placeholder="JO Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="descr_input">Description</label>
+                        <textarea class="form-control" [readonly]="!enable_editing" id="descr_input" rows="5" 
+                            name="description" [(ngModel)]="job_description" placeholder="Scope Of Work"></textarea>
+                    </div>
+                    <div class="form-group" *ngIf="revitFileName != ''">
+                        <label for="sel_file"><strong>Selected File: &nbsp;</strong></label>
+                        <span id="sel_file" class="label label-danger">{{revitFileName}}</span>
+                    </div>
+                    <div class="input-group">
+                        <input type="file" #fileUpload 
+                            id="fileUpload" 
+                            name="fileUpload" 
+                            class="form-control" 
+                            style="display:none;" />
+                        <button class="btn btn-primary form-control"  [disabled]="!enable_editing" (click)="onClick()">
+                            Upload Revit file
+                        </button>  
+                    </div>
+                    <div *ngIf="progress > 0" class="progress" style="margin-top: 10px; height:10px">
+                        <div class="progress-bar progress-bar-striped bg-info" [style.width]="progress + '%'" style="height:20px"></div>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+
+
+  </div>

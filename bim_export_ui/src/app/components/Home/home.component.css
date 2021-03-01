@@ -1,0 +1,53 @@
+#trim_col {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 10px;
+    height: 10px;
+    text-overflow: ellipsis; 
+}
+
+table.gridtable {
+    font-family: tahoma;
+	line-height:15px;
+	font-size:14px;
+	color:#333333;
+	border-width: 1px;
+	
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table.gridtable th {
+    border: 1px solid #ddd;
+    padding: 8px;	
+}
+
+table.gridtable td {
+	border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#job-orders tr:nth-child(even){background-color: #f2f2f2;}
+
+#job-orders tr:hover {background-color: #ddd;}
+
+#job-orders th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4f73d6;
+  color: white;
+}
+/* 
+#job-orders td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } */

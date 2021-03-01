@@ -1,0 +1,345 @@
+swagger: "2.0"
+
+info:
+  title: "BIM Export API Documentation"
+  version: "1.0"
+  description: "BIM Export API microservice.\nThe base-path of the API is `/api`"
+  contact:
+    name: Shaji Nair
+
+basePath: /api
+
+schemes:
+  - http
+securityDefinitions:
+  jwt:
+      type: apiKey
+      name: Authorization
+      in: header
+      x-authentication-scheme: Bearer
+      x-bearerInfoFunc: src.utils.common.decode_token
+    
+paths:
+  /export:
+    post:
+      tags:
+        - authn
+      operationId: src.api.forge_api.export_excel
+      security:
+        - jwt: [] 
+      parameters:
+        - in: query
+          name: job_name
+          type: string
+          required: true
+          description: The name of the job.
+      responses:
+        200:
+          description: 'Job posted succesfully'
+        400:
+          description: 'invalid input, object invalid'
+        409:
+          description: 'conflict error'
+        401:
+          description: 'Authorization error'
+        204:
+          description : 'Empty Result Set'
+  
+  /email:
+    post:
+      tags:
+        - authn
+      operationId: src.api.forge_api.sent_mail
+      parameters:
+        - in: query
+          name: subject
+          type: string
+        - in: query
+          name: content
+          type: string
+      responses:
+        200:
+          description: 'Job posted succesfully'
+        400:
+          description: 'invalid input, object invalid'
+        409:
+          description: 'conflict error'
+        401:
+          description: 'Authorization error'
+        204:
+          description : 'Empty Result Set'
+  /download:
+    get:
+      tags:
+        - authn
+      operationId: src.api.box_api.download_file
+      security:
+        - jwt: [] 
+      parameters:
+        - in: query
+          name: file_id
+          type: string
+          required: true
+          description: File id for download
+       
+      responses:
+        200:
+          description: 'Succesfully fetched download url'
+        400:
+          description: 'invalid input, object invalid'
+        409:
+          description: 'conflict error'
+        401:
+          description: 'Authorization error'
+        204:
+          description : 'Empty Result Set'
+
+
+  /list_all_files:
+    get:
+      tags:
+        - authn
+      operationId: src.api.box_api.list_all_items
+      
+          
+      responses:
+        200:
+          description: 'Job posted succesfully'
+        400:
+          description: 'invalid input, object invalid'
+        409:
+          description: 'conflict error'
+        401:
+          description: 'Authorization error'
+        204:
+          description : 'Empty Result Set'
+
+  /delete_all_files:
+    post:
+      tags:
+        - public
+      operationId: src.api.box_api.delete_all_items
+      responses:
+        200:
+          description: 'Job posted succesfully'
+        400:
+          description: 'invalid input, object invalid'
+        409:
+          description: 'conflict error'
+        401:
+          description: 'Authorization error'
+        204:
+          description : 'Empty Result Set'
+
+  /delete_file:
+    post:
+      tags:
+        - public
+      operationId: src.api.box_api.delete_item
+      parameters:
+        - name: file_id
+          type: string
+          in: query
+          required: true
+      responses:
+        200:
+          description: 'Job posted succesfully'
+        400:
+          description: 'invalid input, object invalid'
+        409:
+          description: 'conflict error'
+        401:
+          description: 'Authorization error'
+        204:
+          description : 'Empty Result Set'
+
+  /upload: 
+    post:
+      tags:
+        - authn
+      security:
+        - jwt: []
+      operationId: src.api.forge_api.file_upload
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: revitFile
+          type: file
+          in: formData
+          required: true
+        - name: jobname
+          type: string
+          in: formData
+          required: true
+        - name: description
+          type: string
+          in: formData
+          required: true
+        - name: is_update
+          type: boolean
+          in: formData
+          required: true
+      responses:
+        201:
+          description: Created, the new file has been successfully uploaded to the server
+        409:
+          description: Conflict, a file already exists with that name on the server
+
+
+  /forge_token: 
+    post:
+      tags:
+        - authn
+      operationId: src.api.forge_api.forge_login
+      security:
+        - jwt: []
+      responses:
+        200:
+          description: 'Return token for accessing Forge API'
+          schema:
+            type: array
+            items:
+              properties:
+                token:
+                  type: string
+                  description: forge access token
+        400:
+          description: invalid input, object invalid
+        409:
+          description: conflict error
+        401:
+          description: Authorization error
+        204:
+          description : Empty Result Set
+
+  /forge_bucket: 
+      post:
+        tags:
+          - authn
+        operationId: src.api.forge_api.create_bucket
+        security:
+          - jwt: [] 
+        parameters:
+          - in: query
+            name: name
+            type: string
+            required: true
+            description: The name of the bucket.
+          - in : query
+            name: token
+            type: string
+            required: true
+            description: The forge API token.
+        responses:
+          200:
+            description: 'Return urn of the bucket'
+            schema:
+              type: array
+              items:
+                properties:
+                  token:
+                    type: string
+                    description: forge access token
+          400:
+            description: invalid input, object invalid
+          409:
+            description: conflict error
+          401:
+            description: Authorization error
+          204:
+            description : Empty Result Set
+            
+      get:
+        tags:
+          - authn
+        operationId: src.api.forge_api.get_bucket_details
+        security:
+          - jwt: [] 
+        parameters:
+          - in: query
+            name: name
+            type: string
+            required: true
+            description: The name of the bucket.
+          - in : query
+            name: token
+            type: string
+            required: true
+            description: The forge API token.
+        responses:
+          200:
+            description: 'Return urn of the bucket'
+            schema:
+              type: array
+              items:
+                properties:
+                  token:
+                    type: string
+                    description: forge access token
+          400:
+            description: invalid input, object invalid
+          409:
+            description: conflict error
+          401:
+            description: Authorization error
+          204:
+            description : Empty Result Set
+
+  /job_order:
+    get:
+      tags:
+        - authn
+      operationId: src.api.mongo_api.list_JO
+      description: listing the documents
+      
+      responses:
+        200:
+          description: 'Listing all job orders'
+        400:
+          description: 'invalid input, object invalid'
+        409:
+          description: 'conflict error'
+        401:
+          description: 'Authorization error'
+        204:
+          description : 'Empty Result Set'
+          
+    post:
+        operationId: src.api.mongo_api.create_JO
+        description: Creating a new Job Order
+
+        parameters: 
+          - in: body
+            name: JobOrder
+            description: To create Job Order
+            schema:
+              $ref: '#/definitions/JOparam'   
+        responses:
+          200:
+           description: 'Created a new job order'
+
+# tags are used for organizing operations
+tags:
+  - name: public
+    description: Operations available to all
+  - name: authn
+    description: Secured Authenticated calls
+
+definitions:
+  ForgeResponse:
+    type: object
+    properties:
+      token:  { type: string }
+  JOparam:         
+    type: object
+    required:
+      - jobordername
+    properties:
+      jobordername:
+        type: string
+      joborderid:
+        type: string
+      userid:
+        type: string   
+      description:
+        type: string    

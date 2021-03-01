@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()" *ngIf="displayClose">
+        <span></span>
+        </button>
+    </h4>
+</div>
+<div class="modal-body">
+    <div *ngIf="!isHtml">{{message}}</div>
+    <div *ngIf="isHtml" [innerHTML]="message"></div>
+</div>
+<div class="modal-footer" *ngIf="useDefaultButtons">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close(false)">{{cancelButtonText}}</button>
+    <button type="button" class="btn btn-info" (click)="activeModal.close(true)">{{okButtonText}}</button>
+</div>
+<div class="modal-footer" *ngIf="!useDefaultButtons || (dialogOptions && dialogOptions.actionButtons)">
+    <button *ngFor="let button of dialogOptions.actionButtons" [ngClass]="button.buttonClass" (click)="doAction(button.onAction)">
+        {{button.text}}
+    </button>   
+</div>
