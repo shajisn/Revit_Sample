@@ -5,8 +5,8 @@
     "host": "0.0.0.0"
   },
   "authn": {
-    "identity_server_url": "https://test-login.gordian.com/.well-known/openid-configuration",
-    "resource_server_url": "https://test-login.gordian.com/resources"
+    "identity_server_url": "",
+    "resource_server_url": ""
   },
   "forge_config": {
     "forge_connection_url": "https://developer.api.autodesk.com/",
@@ -21,9 +21,9 @@
     "redis_secret": "----"
   },
   "mongo_config":{
-    "mongo_url":"mongodb+srv://<server>:<secret>@dev0.6zrtv.mongodb.net/forgeBIMDB?retryWrites=true&w=majority",
-    "mongo_db_name":"forgeBIMDB",
-    "mongo_coll_name":"jobOrders"
+    "mongo_url":"",
+    "mongo_db_name":"",
+    "mongo_coll_name":""
   },
   "box_config":{
     "box_client_id":"---",
