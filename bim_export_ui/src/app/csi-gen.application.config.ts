@@ -43,7 +43,7 @@ export class CSIGenAppConfig implements IApplicationConfig {
         client_id: 'CSIGenUI',
         applicationId: 16,
         applicationName: 'CSIGen',
-        applicationLogo: 'Content/images/navigation/gordian-logo-white.png',
+        applicationLogo: 'Content/images/navigation/logo-white.png',
         idleSessionTimeoutMins: 180,
         authConstants: {
             redirect_uri: window.location.protocol + "//" + window.location.host + "//csigen//auth",
