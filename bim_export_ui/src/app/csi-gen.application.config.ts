@@ -39,7 +39,7 @@ export class CSIGenAppConfig implements IApplicationConfig {
     if (!appConfig) {
       appConfig = {
         angularProdMode: false,
-        authority: 'https://test-login.gordian.com',
+        authority: '',
         client_id: 'CSIGenUI',
         applicationId: 16,
         applicationName: 'CSIGen',
@@ -60,9 +60,9 @@ export class CSIGenAppConfig implements IApplicationConfig {
         defaultPage: '/csigen/',
         localStoragePrefix: 'CSIGen',
         timeOutBetweenRequests: 900000,
-        portalUrl: 'https://test-portal.gordian.com',
-        reportsAppUrl: 'https://test-reports.gordian.com',
-        commandCenterHomeUrl: 'https://test-cc.gordiancloud.com',      
+        portalUrl: '',
+        reportsAppUrl: '',
+        commandCenterHomeUrl: '',      
         csiGenApiUrl: 'http://localhost:5000/api/',
       };
     };
